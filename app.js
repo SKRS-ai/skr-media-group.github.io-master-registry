@@ -134,3 +134,68 @@ function updateCartUI() {
     const count = document.getElementById('cart-count');
     if(count) count.innerText = `Cart (${cart.length})`;
 }
+function loadVerificationTool() {
+    const viewport = document.getElementById('app-viewport');
+    
+    viewport.innerHTML = `
+        <div class="verify-scanner-view">
+            <h2 class="glow-text">INDUSTRIAL RECORD VERIFICATION</h2>
+            <p>Input a Record ID, License Number, or VEX-UUID to verify authenticity.</p>
+            
+            <div class="search-box-container">
+                <input type="text" id="verifyInput" placeholder="EX: SKR-001 or LIC-VEX-992..." class="scan-input">
+                <button class="btn-verify" onclick="executeScan()">RUN SYSTEM SCAN</button>
+            </div>
+
+            <div id="scanResult" class="scan-result-area">
+                <div class="idle-message">SYSTEM IDLE: AWAITING INPUT</div>
+            </div>
+        </div>
+    `;
+}
+
+function executeScan() {
+    const input = document.getElementById('verifyInput').value.trim().toUpperCase();
+    const resultArea = document.getElementById('scanResult');
+    
+    if(!input) return alert("Please enter a Record ID.");
+
+    // Initial Scanning Animation
+    resultArea.innerHTML = `
+        <div class="scanning-animation">
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+            <p>SCANNING MASTER REGISTRY...</p>
+        </div>
+    `;
+
+    // Simulate Database Latency for Professional Feel
+    setTimeout(() => {
+        const foundCompany = masterData.companies.find(c => c.id === input);
+        
+        if (foundCompany) {
+            resultArea.innerHTML = `
+                <div class="status-result validated">
+                    <div class="seal-icon">✓</div>
+                    <div class="result-data">
+                        <h3>RECORD VALIDATED</h3>
+                        <p><strong>Entity:</strong> ${foundCompany.name}</p>
+                        <p><strong>Status:</strong> ${foundCompany.status}</p>
+                        <p><strong>Ownership:</strong> 100% MASTER/PUBLISHING CLEARANCE</p>
+                        <small>TIMESTAMP: ${new Date().toLocaleString()}</small>
+                    </div>
+                </div>
+            `;
+        } else {
+            resultArea.innerHTML = `
+                <div class="status-result invalid">
+                    <div class="seal-icon">X</div>
+                    <div class="result-data">
+                        <h3>RECORD NOT FOUND</h3>
+                        <p>The ID entered does not match any verified records in the Solomon Kin Master Registry.</p>
+                        <button class="btn-verify" onclick="loadVerificationTool()">RETRY</button>
+                    </div>
+                </div>
+            `;
+        }
+    }, 2000);
+}
