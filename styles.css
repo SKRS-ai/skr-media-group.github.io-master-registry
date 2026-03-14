@@ -23,3 +23,42 @@
     font-size: 0.7rem;
     font-family: monospace;
 }
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.service-card {
+    background: var(--sk-surface);
+    border: 1px solid var(--sk-border);
+    padding: 25px;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--sk-blue);
+    box-shadow: var(--sk-glow);
+}
+
+.sku { font-family: monospace; font-size: 0.7rem; opacity: 0.6; margin-bottom: 10px; }
+
+.price {
+    font-size: 1.5rem;
+    color: var(--sk-blue);
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.cart-item-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+    font-family: monospace;
+}
