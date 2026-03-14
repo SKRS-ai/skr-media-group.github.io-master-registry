@@ -87,3 +87,50 @@ function searchRegistry() {
 
 // Start System
 window.onload = initSystem;
+// Global Cart State
+let cart = JSON.parse(localStorage.getItem('skr_cart')) || [];
+
+function loadServices() {
+    const viewport = document.getElementById('app-viewport');
+    
+    // Example of a few autonomous products from our list of 50
+    const products = [
+        { id: 'SVC-001', name: 'Industrial Sync Certification', price: 499, desc: 'Full legal audit & 100% rights verification.' },
+        { id: 'SVC-002', name: 'AI Character Authenticity Seal', price: 299, desc: 'Digital human rights & synthetic star casting legal seal.' },
+        { id: 'SVC-003', name: 'Sovereign Village Data Archiving', price: 150, desc: 'Secure record storage within the SKR registry.' },
+        { id: 'SVC-004', name: 'Identity Records Verification', price: 199, desc: 'TBBL USA Great Seal identity certification.' }
+    ];
+
+    let html = `
+        <div class="view-header">
+            <h2>AUTONOMOUS SERVICES PORTAL</h2>
+            <p>Select industrial-grade packages for immediate processing.</p>
+        </div>
+        <div class="service-grid">`;
+
+    products.forEach(p => {
+        html += `
+            <div class="service-card">
+                <div class="sku">SKU: ${p.id}</div>
+                <h3>${p.name}</h3>
+                <p>${p.desc}</p>
+                <div class="price">$${p.price}.00</div>
+                <button class="btn-verify" onclick="addToCart('${p.id}', '${p.name}', ${p.price})">ADD TO COMMAND CART</button>
+            </div>`;
+    });
+
+    html += `</div>`;
+    viewport.innerHTML = html;
+}
+
+function addToCart(id, name, price) {
+    cart.push({ id, name, price });
+    localStorage.setItem('skr_cart', JSON.stringify(cart));
+    updateCartUI();
+    alert(`${name} added to command queue.`);
+}
+
+function updateCartUI() {
+    const count = document.getElementById('cart-count');
+    if(count) count.innerText = `Cart (${cart.length})`;
+}
