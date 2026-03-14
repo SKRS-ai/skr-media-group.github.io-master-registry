@@ -1,64 +1,51 @@
-.bold-cyan { color: var(--sk-blue); font-weight: bold; }
-.glow-text { text-shadow: 0 0 10px var(--sk-blue); letter-spacing: 2px; }
-
-.description-box {
-    background: rgba(0, 0, 0, 0.4);
-    padding: 20px;
-    border-left: 4px solid var(--sk-blue);
-    font-style: italic;
-    margin: 20px 0;
-}
-
-.asset-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-}
-
-.asset-card {
-    background: var(--sk-surface);
+.scan-input {
+    background: #000;
     border: 1px solid var(--sk-border);
-    padding: 15px;
-    text-align: center;
-    font-size: 0.7rem;
-    font-family: monospace;
-}
-.service-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
-
-.service-card {
-    background: var(--sk-surface);
-    border: 1px solid var(--sk-border);
-    padding: 25px;
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.service-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--sk-blue);
-    box-shadow: var(--sk-glow);
-}
-
-.sku { font-family: monospace; font-size: 0.7rem; opacity: 0.6; margin-bottom: 10px; }
-
-.price {
-    font-size: 1.5rem;
     color: var(--sk-blue);
-    margin: 15px 0;
-    font-weight: bold;
+    padding: 15px;
+    width: 300px;
+    font-family: monospace;
+    margin-right: 10px;
 }
 
-.cart-item-row {
+.scan-result-area {
+    margin-top: 40px;
+    min-height: 200px;
+    border: 1px dashed var(--sk-border);
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid rgba(0, 242, 255, 0.1);
-    font-family: monospace;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Scanning Animation */
+.progress-bar {
+    width: 300px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
+}
+.progress-fill {
+    height: 100%;
+    background: var(--sk-blue);
+    width: 0%;
+    animation: fillProgress 2s ease-in-out forwards;
+}
+@keyframes fillProgress {
+    to { width: 100%; }
+}
+
+/* Result Cards */
+.status-result {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    width: 100%;
+}
+.validated { border-left: 10px solid #00ff00; background: rgba(0, 255, 0, 0.05); }
+.invalid { border-left: 10px solid #ff0000; background: rgba(255, 0, 0, 0.05); }
+
+.seal-icon {
+    font-size: 3rem;
+    margin-right: 30px;
 }
