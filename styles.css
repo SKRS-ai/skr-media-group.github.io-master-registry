@@ -49,3 +49,40 @@
     font-size: 3rem;
     margin-right: 30px;
 }
+.legal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.legal-section {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border-left: 2px solid var(--sk-blue);
+}
+
+.legal-section h3 {
+    font-size: 0.9rem;
+    color: var(--sk-blue);
+    margin-bottom: 10px;
+}
+
+.legal-section p {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+.download-portal {
+    margin-top: 40px;
+    padding: 30px;
+    border-top: 1px dashed var(--sk-border);
+}
+
+.file-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
