@@ -3,93 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CastAiStars | The Digital Backlot</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <title>SOLOMON KIN | MASTER REGISTRY</title>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #000; }
-        
-        /* Nebula Pulse Animation */
-        @keyframes nebula-pulse {
-            0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.4)); }
-            50% { transform: scale(1.05); filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.8)); }
-            100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.4)); }
+        :root {
+            --sk-blue: #00f2ff;
+            --sk-dark-bg: #050a0f;
+            --sk-surface: rgba(16, 25, 35, 0.85);
+            --sk-border: rgba(0, 242, 255, 0.3);
+            --sk-text: #e0e6ed;
+            --sk-glow: 0 0 15px rgba(0, 242, 255, 0.2);
         }
-        .nebula-star {
-            animation: nebula-pulse 4s ease-in-out infinite;
+
+        body {
+            background-color: var(--sk-dark-bg);
+            background-image: linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: var(--sk-text);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            overflow-x: hidden;
         }
-        .text-gradient {
-            background: linear-gradient(to right, #ffffff, #00e5ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        /* Top Command Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: rgba(5, 10, 15, 0.95);
+            border-bottom: 2px solid var(--sk-blue);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        .glass-panel {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+
+        .logo-area { font-weight: 900; letter-spacing: 3px; color: var(--sk-blue); }
+
+        .nav-links button {
+            background: none;
+            border: none;
+            color: var(--sk-text);
+            margin-left: 25px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links button:hover { color: var(--sk-blue); text-shadow: var(--sk-glow); }
+
+        /* Content Container */
+        .viewport {
+            max-width: 1300px;
+            margin: 40px auto;
+            padding: 20px;
+            min-height: 80vh;
+        }
+
+        /* Glassmorphism Table Styles */
+        .registry-card {
+            background: var(--sk-surface);
+            border: 1px solid var(--sk-border);
+            border-radius: 4px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th { text-align: left; padding: 15px; color: var(--sk-blue); border-bottom: 1px solid var(--sk-blue); font-size: 0.75rem; }
+        td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; font-family: 'Courier New', monospace; }
+
+        /* UI Components */
+        .btn-verify {
+            background: transparent;
+            border: 1px solid var(--sk-blue);
+            color: var(--sk-blue);
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 0.7rem;
+        }
+
+        .btn-verify:hover { background: var(--sk-blue); color: black; }
+
+        .status-pill {
+            border: 1px solid var(--sk-blue);
+            padding: 2px 8px;
+            font-size: 0.65rem;
+            border-radius: 10px;
+        }
+
+        .rights-gold { color: #ffd700; font-weight: bold; }
+
+        /* Grid for Services */
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .service-item { border: 1px solid var(--sk-border); padding: 20px; background: rgba(0,0,0,0.3); }
+
+        /* Footer */
+        .master-footer {
+            text-align: center;
+            padding: 60px;
+            font-size: 0.7rem;
+            opacity: 0.5;
+            border-top: 1px solid var(--sk-border);
         }
     </style>
 </head>
-<body class="text-white overflow-x-hidden">
+<body>
 
-    <nav class="fixed w-full z-50 glass-panel">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-cyan-500 rounded flex items-center justify-center nebula-star">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="black"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
-                </div>
-                <span class="text-2xl font-black tracking-tighter uppercase">Cast<span class="text-cyan-400">AI</span>Stars</span>
-            </div>
-            <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-widest text-gray-400">
-                <a href="#" class="hover:text-cyan-400 transition">The Backlot</a>
-                <a href="#" class="hover:text-cyan-400 transition">For Directors</a>
-                <a href="#" class="hover:text-cyan-400 transition">For Creators</a>
-            </div>
-            <button class="bg-white text-black px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-cyan-400 transition">Beta Access</button>
+    <nav class="navbar">
+        <div class="logo-area">SOLOMON KIN RECORDS | MEDIA GROUP</div>
+        <div class="nav-links">
+            <button onclick="renderRegistry()">Registry</button>
+            <button onclick="renderServices()">Services</button>
+            <button onclick="renderVerifier()">Verifier</button>
+            <button onclick="renderPortal()">The Vault</button>
         </div>
     </nav>
 
-    <section class="relative h-screen flex items-center justify-center pt-20">
-        <div class="absolute inset-0 z-0 opacity-30">
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-600 rounded-full mix-blend-screen filter blur-[120px] animate-pulse"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-900 rounded-full mix-blend-screen filter blur-[120px] animate-pulse"></div>
+    <div id="main-view" class="viewport">
         </div>
 
-        <div class="relative z-10 text-center max-w-4xl px-6">
-            <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-none">
-                THE FUTURE OF FAME IS <span class="text-gradient">SYNTHETIC.</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-400 mb-10 font-light max-w-2xl mx-auto">
-                Welcome to the Headquarters. Cast verified virtual stars for your next production. Powered by <span class="text-white font-bold">Solomon Kin Records</span>.
-            </p>
-            
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <button class="bg-cyan-500 text-black px-10 py-4 rounded-lg font-black text-lg uppercase tracking-widest hover:bg-cyan-400 shadow-[0_0_20px_rgba(0,229,255,0.4)] transition">Enter the Office</button>
-                <button class="border border-gray-700 hover:border-white px-10 py-4 rounded-lg font-black text-lg uppercase tracking-widest transition">Register a Star</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto px-6 py-24 border-t border-gray-900">
-        <div class="grid md:grid-cols-3 gap-12">
-            <div class="glass-panel p-8 rounded-2xl">
-                <h3 class="text-cyan-400 font-bold mb-4 uppercase tracking-widest">Verified Continuity</h3>
-                <p class="text-gray-400">Our stars maintain visual consistency across every scene. No "uncanny valley," just professional assets.</p>
-            </div>
-            <div class="glass-panel p-8 rounded-2xl">
-                <h3 class="text-cyan-400 font-bold mb-4 uppercase tracking-widest">The Digital Soul</h3>
-                <p class="text-gray-400">Every talent registry includes a unique, consistent Voice ID curated by Solomon Kin Records.</p>
-            </div>
-            <div class="glass-panel p-8 rounded-2xl">
-                <h3 class="text-cyan-400 font-bold mb-4 uppercase tracking-widest">Smart Licensing</h3>
-                <p class="text-gray-400">Automated casting contracts that protect creators and empower directors in one click.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-12 border-t border-gray-900 text-center text-gray-600">
-        <p class="text-xs uppercase tracking-[0.5em]">&copy; 2026 Solomon Kin Records LLC. All Rights Reserved.</p>
+    <footer class="master-footer">
+        © 2026 SOLOMON KIN RECORDS, LLC. ARCHITECTS OF THE NEW MEDIA LANDSCAPE. <br>
+        VEXILLA AiTS DATA SECURITY PROTOCOL ACTIVE.
     </footer>
 
+    <script>
+        let db = [];
+
+        // INITIALIZE SYSTEM
+        async function init() {
+            try {
+                const res = await fetch('database.json');
+                const data = await res.json();
+                db = data.companies;
+                renderRegistry();
+            } catch (e) {
+                document.getElementById('main-view').innerHTML = "SYSTEM ERROR: DATABASE LINK SEVERED.";
+            }
+        }
+
+        // VIEW: REGISTRY
+        function renderRegistry() {
+            let html = `
+                <div class="registry-card">
+                    <h2>GLOBAL CONGLOMERATE REGISTRY</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>ENTITY NAME</th>
+                                <th>INDUSTRY</th>
+                                <th>OWNERSHIP</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
+            db.forEach(c => {
+                html += `
+                    <tr>
+                        <td>${c.id}</td>
+                        <td style="color:var(--sk-blue)">${c.name}</td>
+                        <td>${c.industry}</td>
+                        <td class="rights-gold">100% MASTER/PUB</td>
+                        <td><button class="btn-verify" onclick="alert('Viewing: ${c.name}')">RECORDS</button></td>
+                    </tr>`;
+            });
+            html += `</tbody></table></div>`;
+            document.getElementById('main-view').innerHTML = html;
+        }
+
+        // VIEW: SERVICES
+        function renderServices() {
+            const svcs = [
+                { name: "IP Audit & Certification", price: "$499" },
+                { name: "AI Character Performance Licensing", price: "$1,200" },
+                { name: "Vexilla DataTrust Archiving", price: "$250" },
+                { name: "Sync Catalog Master Clearance", price: "$850" }
+            ];
+            let html = `<h2>AUTONOMOUS SERVICE PORTAL</h2><div class="service-grid">`;
+            svcs.forEach(s => {
+                html += `
+                    <div class="service-item">
+                        <h3>${s.name}</h3>
+                        <p>Immediate industrial-grade verification and record creation.</p>
+                        <div style="font-size:1.5rem; color:var(--sk-blue); margin: 10px 0;">${s.price}</div>
+                        <button class="btn-verify" style="width:100%">PROCURE SERVICE</button>
+                    </div>`;
+            });
+            html += `</div>`;
+            document.getElementById('main-view').innerHTML = html;
+        }
+
+        // VIEW: VERIFIER
+        function renderVerifier() {
+            document.getElementById('main-view').innerHTML = `
+                <div class="registry-card" style="text-align:center">
+                    <h2>RECORD AUTHENTICITY SCANNER</h2>
+                    <input type="text" id="v-id" placeholder="ENTER RECORD ID" style="padding:15px; width:300px; background:#000; border:1px solid var(--sk-blue); color:var(--sk-blue)">
+                    <button class="btn-verify" onclick="doScan()" style="padding:15px">RUN SCAN</button>
+                    <div id="v-res" style="margin-top:30px"></div>
+                </div>`;
+        }
+
+        function doScan() {
+            const id = document.getElementById('v-id').value.toUpperCase();
+            const res = document.getElementById('v-res');
+            res.innerHTML = "SCANNING MASTER REGISTRY...";
+            setTimeout(() => {
+                const found = db.find(c => c.id === id);
+                res.innerHTML = found ? 
+                    `<div style="color:#00ff00; border:1px solid #00ff00; padding:20px">VALIDATED: ${found.name}</div>` : 
+                    `<div style="color:red; border:1px solid red; padding:20px">INVALID: RECORD NOT FOUND</div>`;
+            }, 1500);
+        }
+
+        // VIEW: PORTAL (VAULT)
+        function renderPortal() {
+            document.getElementById('main-view').innerHTML = `
+                <div class="registry-card">
+                    <h2>THE VAULT | USER ACCESS</h2>
+                    <p>Current Access Level: <span class="status-pill">MASTER_USER</span></p>
+                    <div style="margin-top:20px; padding:20px; background:rgba(255,255,255,0.05)">
+                        <strong>Active Licenses:</strong> 02 <br>
+                        <strong>Pending Certifications:</strong> 00
+                    </div>
+                </div>`;
+        }
+
+        window.onload = init;
+    </script>
 </body>
 </html>
