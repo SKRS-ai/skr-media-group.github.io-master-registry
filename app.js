@@ -199,3 +199,39 @@ function executeScan() {
         }
     }, 2000);
 }
+function renderLegalPortal() {
+    const viewport = document.getElementById('main-view');
+    
+    viewport.innerHTML = `
+        <div class="registry-card">
+            <h2 class="glow-text">LEGAL INFRASTRUCTURE & DISCLOSURES</h2>
+            <p>Solomon Kin Records, LLC Media Group operates as a <strong>Master Rights Direct Owner</strong>.</p>
+            
+            <div class="legal-grid">
+                <div class="legal-section">
+                    <h3>01. ONE-STOP CERTIFICATION</h3>
+                    <p>Every asset identified in this registry is guaranteed "One-Stop." Solomon Kin Records, LLC maintains 100% of the Master and 100% of the Publishing rights. No third-party clearances are required for industrial synchronization.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h3>02. AI & SYNTHETIC CASTING</h3>
+                    <p>All AI-generated characters and synthetic performances are legally anchored to the SKR Master Registry. Usage rights are issued via Vexilla AiTS smart-contracts to ensure perpetual legal integrity.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h3>03. DATA & RECORD SECURITY</h3>
+                    <p>Records kept within this portal are verified by Vexilla AiTS. Solomon Kin Records, LLC acts as the primary custodian for all trade, environmental, and multimedia records listed under the SKR identifier.</p>
+                </div>
+            </div>
+
+            <div class="download-portal">
+                <h3>MASTER DOCUMENTATION TEMPLATES</h3>
+                <div class="file-list">
+                    <button class="btn-verify" onclick="alert('Downloading Standard Sync License...')">↓ DOWNLOAD STANDARD SYNC LICENSE (PDF)</button>
+                    <button class="btn-verify" onclick="alert('Downloading Master Affiliation Agreement...')">↓ DOWNLOAD MASTER AFFILIATION TERMS (PDF)</button>
+                    <button class="btn-verify" onclick="alert('Downloading AI Casting Rider...')">↓ DOWNLOAD AI CASTING RIDER (PDF)</button>
+                </div>
+            </div>
+        </div>
+    `;
+}
