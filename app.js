@@ -235,3 +235,41 @@ function renderLegalPortal() {
         </div>
     `;
 }
+function renderDocRepository() {
+    const viewport = document.getElementById('main-view');
+    
+    // Data structure for your intellectual property
+    const documents = [
+        { type: 'PATENT', id: 'PAT-VEX-2026', title: 'Autonomous AI Licensing Method (V1)', status: 'FILED' },
+        { type: 'TRAINING', id: 'TRN-SKR-005', title: 'Industrial Record-Keeping Standards', status: 'ACTIVE' },
+        { type: 'CERTIFICATION', id: 'CRT-CBG-201', title: 'Blue-Green Environmental Protocol', status: 'VERIFIED' },
+        { type: 'METHODS', id: 'MET-IBG-99', title: 'Global Trade Ledger Integration', status: 'PUBLISHED' }
+    ];
+
+    let html = `
+        <div class="registry-card">
+            <h2 class="glow-text">INTELLECTUAL PROPERTY & PATENT REPOSITORY</h2>
+            <p>Official Index of Proprietary Methods, Industrial Patents, and Training Protocols.</p>
+            
+            <div class="repo-controls">
+                <input type="text" placeholder="FILTER BY PATENT ID..." class="scan-input" style="width:100%; margin-bottom:20px;">
+            </div>
+
+            <div class="doc-list">`;
+
+    documents.forEach(doc => {
+        html += `
+            <div class="doc-row">
+                <div class="doc-meta">
+                    <span class="status-pill">${doc.type}</span>
+                    <code>ID: ${doc.id}</code>
+                </div>
+                <div class="doc-title">${doc.title}</div>
+                <div class="doc-status" style="color:${doc.status === 'FILED' ? 'var(--sk-blue)' : '#00ff00'}">${doc.status}</div>
+                <button class="btn-verify" onclick="alert('Accessing Document ${doc.id}...')">REQUEST ACCESS</button>
+            </div>`;
+    });
+
+    html += `</div></div>`;
+    viewport.innerHTML = html;
+}
